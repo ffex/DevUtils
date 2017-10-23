@@ -2,12 +2,17 @@ import os
 import folders
 
 class LinuxFolderManager(folders.folders):
-
+    GUI=False
     def __init__(self):
         folders.folders.__init__(self)
 
 
     # folders method
+    def deletefolder(self,num):
+        pass #TODO
+    
+    def settingGUI:
+        pass #TODO
     def addfolder(self):
         title = input("title: ")
         path = input("pathname: ")
@@ -20,14 +25,30 @@ class LinuxFolderManager(folders.folders):
             cnt = cnt + 1
 
     def commandfolders(self):
-        print("Open a folder by number")
+        print("Open a dir by number")
+        if GUI:
+             print("-> GUI")
+        else:
+             print("-> CLI")
         self.printfolders()
-        print("a - add new folder")
+        print("a - add new dir")
+        print("d - delete dir")
+        print("t - CLI or GUI")
+        print("q - quit to main menu")
         action = input("-> ")
         if action == "a":
             self.addfolder()
+        elif action == "d":
+            pass #TODO
+        elif action == "t":
+            GUI=!GUI
+        elif action == "q":
+            pass
         else:
             num = int(action[0:2])
             # print(self._dictfolders[num][1])
-            os.system("nautilus " + self._dict[num][1] + " 2>/dev/null &")
+            if GUI:
+                os.system("nautilus " + self._dict[num][1] + " 2>/dev/null &")
+            else:
+                pass #TODO
             os.system("clear")
