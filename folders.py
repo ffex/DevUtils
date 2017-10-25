@@ -3,7 +3,9 @@ class folders:
     _dict={}
     _last=0
     __dir_path =""
-
+    def _deletefolderfile(self, num):
+        pass
+    
     def _addfolderfile(self,title,path):
 
         out_file=open(self.__dir_path + "/folders","a")
