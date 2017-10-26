@@ -9,6 +9,7 @@ class LinuxFolderManager(folders.folders):
 
     # folders method
     def deletefolder(self,num):
+        self._deletefolder(num)
         pass #TODO
     
     def settingGUI:
