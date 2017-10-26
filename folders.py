@@ -4,7 +4,7 @@ class folders:
     _last=0
     __dir_path =""
     def _deletefolderfile(self, num):
-        pass
+        _dict.pop(num,None)
     
     def _addfolderfile(self,title,path):
 
