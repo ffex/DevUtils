@@ -1,14 +1,30 @@
 import os
 import LinuxFolderManager
+import ClipboardWatcher
+from ClipboardWatcher import ClipboardWatcher
+import LinuxClipboardManager
+import LinuxURLManager
+
 
 class main:
-    __mrgfolder=LinuxFolderManager.LinuxFolderManager()
 
+    def __init__(self):
+
+        self.__mrgfolder = LinuxFolderManager.LinuxFolderManager("folders")
+        self.__mrgclipboard=LinuxClipboardManager.LinuxClipboardManager()
+        self.__mrgurl=LinuxURLManager.LinuxURLManager("URLS")
+
+
+        self._thread = ClipboardWatcher(self.__mrgclipboard)
+        self._thread.start()
 
 
     def start(self):
         run=True
+
+
         while run:
+            os.system("clear")
             print("Welcome to ffex console. What do you need?")
             print("1 - Open favorite folder")
             print("2 - Take a note")
@@ -22,11 +38,19 @@ class main:
             os.system("clear")
             if action == "1":
                 self.__mrgfolder.commandfolders()
+                self.__mrgfolder._saveFile()
+            elif action =="3":
+                self.__mrgurl.commandURL()
+                self.__mrgurl._saveFile()
+            elif action == "5":
+                self.__mrgclipboard.command()
+
             elif action == "d":
                 print(self.__mrgfolder.getdict())
             elif action=="q":
                 os.system("clear")
                 run=False
+                self._thread.stop()
 
 
 m=main()
