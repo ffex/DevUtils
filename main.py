@@ -13,7 +13,7 @@ class main:
         self.__mrgfolder = LinuxFolderManager.LinuxFolderManager()
         self.__mrgclipboard=LinuxClipboardManager.LinuxClipboardManager()
         self.__mrgurl=LinuxURLManager.LinuxURLManager()
-		self.__mrgcode=LinuxCodeManager.LinuxCodeManager()
+        self.__mrgcode=LinuxCodeManager.LinuxCodeManager()
 
 
         self._thread = ClipboardWatcher(self.__mrgclipboard)
@@ -43,8 +43,8 @@ class main:
             elif action =="3":
                 self.__mrgurl.commandURL()
                 self.__mrgurl._saveFile()
-			elif action=="4":
-				self.__mrgcode.commandCode()
+            elif action=="4":
+                self.__mrgcode.commandCode()
 				
             elif action == "5":
                 self.__mrgclipboard.command()

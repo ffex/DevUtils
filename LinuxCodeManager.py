@@ -2,10 +2,10 @@ import os
 import MultiFile
 
 class LinuxCodeManager(MultiFile.MultiFile):
-	def __init__(self):
-		super(LinuxCodeManager,self).__init__("Code")
+    def __init__(self):
+        super(LinuxCodeManager,self).__init__("Code")
 	
-	def deleteCode(self,num):
+    def deleteCode(self,num):
 	    
         self._deleteFile(num)
         pass #TODO
@@ -13,18 +13,20 @@ class LinuxCodeManager(MultiFile.MultiFile):
     def addCode(self):
         title = input("title: ")
         self._addFile(title)
-		#aprire il nano
-		os.system("nano " + os.path.join(self._dir))
+        #aprire il nano
+        os.system("nano " + os.path.join(self._dir,title))
 		
-	def printCodeList(self):
+    def printCodeList(self):
         cnt = 0
         for elem in self._titles:
-            print(str(cnt) + " - " + elem[0])
+            print(str(cnt) + " - " + elem)
             cnt = cnt + 1
 		
-	def commandCode(self):
+    def commandCode(self):
         print("Open a piece of Code by number")
-        self.printCodeList
+        self.printCodeList()
+
+        #print(os.listdir(self._dir))
         print("-------------------->>>")
         print("a - add new Code")
         print("d - delete Code")
