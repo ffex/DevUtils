@@ -5,8 +5,8 @@ class LinuxFolderManager(SingleFile.SingleFile):
 
     GUI=False
 
-    def __init__(self,type):
-        super(LinuxFolderManager,self).__init__(type)
+    def __init__(self):
+        super(LinuxFolderManager,self).__init__("folder")
 
 
 

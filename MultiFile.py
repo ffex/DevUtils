@@ -28,9 +28,12 @@ class MultiFile:
     def _addFile(self,title):
 	    self._titles.append(title)
 		#salvataggio del file
+		if os.path.isfile(os.path.join(self._dir,title)):
+            file = open(os.path.join(self._dir), "w")
+			file.close()
 	    
         
-    def _deleteFile(self,title):
-		os.remove(os.path.join(self._dir,title))
+    def _deleteFile(self,num):
+		os.remove(os.path.join(self._dir,self._titles[num]))
 	#da guardare
-        self._titles.remove(title)
+        self._titles.remove(num)

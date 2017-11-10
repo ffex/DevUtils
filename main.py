@@ -4,15 +4,16 @@ import ClipboardWatcher
 from ClipboardWatcher import ClipboardWatcher
 import LinuxClipboardManager
 import LinuxURLManager
-
+import LinuxCodeManager
 
 class main:
 
     def __init__(self):
 
-        self.__mrgfolder = LinuxFolderManager.LinuxFolderManager("folders")
+        self.__mrgfolder = LinuxFolderManager.LinuxFolderManager()
         self.__mrgclipboard=LinuxClipboardManager.LinuxClipboardManager()
-        self.__mrgurl=LinuxURLManager.LinuxURLManager("URLS")
+        self.__mrgurl=LinuxURLManager.LinuxURLManager()
+		self.__mrgcode=LinuxCodeManager.LinuxCodeManager()
 
 
         self._thread = ClipboardWatcher(self.__mrgclipboard)
@@ -42,9 +43,12 @@ class main:
             elif action =="3":
                 self.__mrgurl.commandURL()
                 self.__mrgurl._saveFile()
+			elif action=="4":
+				self.__mrgcode.commandCode()
+				
             elif action == "5":
                 self.__mrgclipboard.command()
-
+	
             elif action == "d":
                 print(self.__mrgfolder.getdict())
             elif action=="q":

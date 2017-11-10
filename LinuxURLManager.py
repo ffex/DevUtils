@@ -2,16 +2,18 @@ import os
 import SingleFile
 
 class LinuxURLManager(SingleFile.SingleFile):
-    def __init__(self,type):
-        super(LinuxURLManager, self).__init__(type)
+    def __init__(self):
+        super(LinuxURLManager, self).__init__("URLS")
 
     def deleteURL(self,num):
         self._deleteElem(num)
         pass #TODO
+		
     def addURL(self):
         title = input("title: ")
         content = input("pathname: ")
         self._addElem(title, content)
+		
     def printURLS(self):
         cnt = 0
         for elem in self._dict.values():
