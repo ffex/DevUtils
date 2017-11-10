@@ -57,8 +57,8 @@ class LinuxFolderManager(SingleFile.SingleFile):
             num = int(action[0:2])
             # print(self._dictfolders[num][1])
             if self.GUI:
-                os.system("nautilus " + self._dict[num][1] + " 2>/dev/null &")
-            else:
                 pass #TODO
+            else:
+                os.system("nautilus " + self._dict[num][1] + " 2>/dev/null &")
             os.system("clear")
 
