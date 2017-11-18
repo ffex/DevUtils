@@ -1,27 +1,31 @@
 import os
-import folders
 
-class LinuxFolderManager(folders.folders):
+from Core import SingleFile
+
+
+class LinuxFolderManager(SingleFile.SingleFile):
 
     GUI=False
 
     def __init__(self):
-        folders.folders.__init__(self)
+        super(LinuxFolderManager,self).__init__("folder")
+
+
 
 
     # folders method
 
     def deletefolder(self,num):
-        self._deletefolder(num)
+        self._deleteElem(num)
         pass #TODO
     
-    def settingGUI:
+    def settingGUI(self):
         pass #TODO
 
     def addfolder(self):
         title = input("title: ")
-        path = input("pathname: ")
-        self._addfolderfile(title, path)
+        content = input("pathname: ")
+        self._addElem(title, content)
 
     def printfolders(self):
         cnt = 0
@@ -31,11 +35,12 @@ class LinuxFolderManager(folders.folders):
 
     def commandfolders(self):
         print("Open a dir by number")
-        if GUI:
+        if self.GUI:
              print("-> GUI")
         else:
              print("-> CLI")
         self.printfolders()
+        print("-------------------->>>")
         print("a - add new dir")
         print("d - delete dir")
         print("t - CLI or GUI")
@@ -44,17 +49,18 @@ class LinuxFolderManager(folders.folders):
         if action == "a":
             self.addfolder()
         elif action == "d":
-            pass #TODO
+            num1=input("Which one? > ")
+            self.deletefolder(int(num1))
         elif action == "t":
-            GUI=!GUI
+            self.GUI= not self.GUI
         elif action == "q":
             pass
         else:
             num = int(action[0:2])
             # print(self._dictfolders[num][1])
-            if GUI:
-                os.system("nautilus " + self._dict[num][1] + " 2>/dev/null &")
-            else:
+            if self.GUI:
                 pass #TODO
+            else:
+                os.system("nautilus " + self._dict[num][1] + " 2>/dev/null &")
             os.system("clear")
 
