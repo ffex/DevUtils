@@ -3,7 +3,7 @@ import os
 class MultiFile:
     def __init__(self,type):
         self._type=type
-        path=os.path.join(os.path.dirname(os.path.realpath(__file__)),type)
+        path=os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))),"Projects",type)
         if not(os.path.isdir(path)):
             os.makedirs(path)
         self._type=type

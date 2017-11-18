@@ -1,5 +1,7 @@
-import Clipboard
 import os
+
+from Core import Clipboard
+
 
 class LinuxClipboardManager(Clipboard.Clipboard):
 

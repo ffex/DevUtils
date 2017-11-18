@@ -6,9 +6,11 @@ class SingleFile:
 
     def __init__(self,type):
         self._dict = {}
+        nameproj="";
         self._last = 0
         self._type=type
-        self.__dir_path = os.path.dirname(os.path.realpath(__file__))
+        self.__dir_path = os.path.dirname(os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))),'Projects',nameproj))
+
         self._loadFile()
 
     def _deleteElem(self, num):

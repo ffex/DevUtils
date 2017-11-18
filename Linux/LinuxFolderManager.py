@@ -1,5 +1,7 @@
 import os
-import SingleFile
+
+from Core import SingleFile
+
 
 class LinuxFolderManager(SingleFile.SingleFile):
 

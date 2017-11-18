@@ -1,9 +1,12 @@
 import os
-import MultiFile
 
-class LinuxCodeManager(MultiFile.MultiFile):
-    def __init__(self):
-        super(LinuxCodeManager,self).__init__("Code")
+from Core import MultiFile
+
+
+class LinuxNoteManager(MultiFile.MultiFile):
+    def __init__(self,type):
+        super(LinuxNoteManager,self).__init__(type)
+        self._type=type
 	
     def deleteCode(self,num):
 	    
@@ -28,8 +31,8 @@ class LinuxCodeManager(MultiFile.MultiFile):
 
         #print(os.listdir(self._dir))
         print("-------------------->>>")
-        print("a - add new Code")
-        print("d - delete Code")
+        print("a - add new " + self._type.lower())
+        print("d - delete "+ self._type.lower())
         print("q - quit to main menu")
         action = input("-> ")
         if action == "a":
@@ -42,4 +45,5 @@ class LinuxCodeManager(MultiFile.MultiFile):
         else:
             num = int(action[0:2])
             #TODO aprire appunti
+            os.system("nano " + os.path.join(self._dir,self._titles[num]))
             os.system("clear")

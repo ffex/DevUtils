@@ -1,5 +1,7 @@
 import os
-import SingleFile
+
+from Core import SingleFile
+
 
 class LinuxURLManager(SingleFile.SingleFile):
     def __init__(self):
