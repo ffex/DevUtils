@@ -18,7 +18,7 @@ class LinuxURLManager(SingleFile.SingleFile):
 		
     def printURLS(self):
         cnt = 0
-        for elem in self._dict.values():
+        for elem in self._elem:
             print(str(cnt) + " - " + elem[0])
             cnt = cnt + 1
     def commandURL(self):
@@ -27,6 +27,7 @@ class LinuxURLManager(SingleFile.SingleFile):
         print("-------------------->>>")
         print("a - add new URL")
         print("d - delete URL")
+        print("v - copy from clip")
         print("q - quit to main menu")
         action = input("-> ")
         if action == "a":

@@ -29,9 +29,37 @@ class LinuxFolderManager(SingleFile.SingleFile):
 
     def printfolders(self):
         cnt = 0
-        for elem in self._dict.values():
+        for elem in self._elem:
             print(str(cnt) + " - " + elem[0])
             cnt = cnt + 1
+#commands!
+        # a
+        # a,title
+        # a,title,path
+        # d
+        # dnum
+        # v
+        # v,title
+        # num -> se nel campo d'azione
+        #
+        #
+    def __command(self,commands):
+        commands=commands.split(",")
+        com=commands[0]
+        if com=="a":
+            comL=len(commands)
+            if comL==2:
+                title=commands[1]
+            elif comL==3:
+                title=commands[1]
+                folderdir=commands[2]
+
+        elif com=="d":
+            pass
+        elif com=="v":
+            pass
+        else:
+            pass
 
     def commandfolders(self):
         print("Open a dir by number")
@@ -43,6 +71,7 @@ class LinuxFolderManager(SingleFile.SingleFile):
         print("-------------------->>>")
         print("a - add new dir")
         print("d - delete dir")
+        print("v - copy from clip")
         print("t - CLI or GUI")
         print("q - quit to main menu")
         action = input("-> ")
@@ -61,6 +90,6 @@ class LinuxFolderManager(SingleFile.SingleFile):
             if self.GUI:
                 pass #TODO
             else:
-                os.system("nautilus " + self._dict[num][1] + " 2>/dev/null &")
+                os.system("nautilus " + self._elem[num][1] + " 2>/dev/null &")
             os.system("clear")
 

@@ -35,5 +35,5 @@ class MultiFile:
         
     def _deleteFile(self,num):
         os.remove(os.path.join(self._dir,self._titles[num]))
-        #da guardare
-        titles._self.remove(num)
+        #funziona, da testare
+        self._titles.remove(self._titles[num])
