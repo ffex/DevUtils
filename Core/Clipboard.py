@@ -12,6 +12,8 @@ class Clipboard:
 
     def item(self,key):
         return self._clipboardlist[key]
+    def lastItem(self):
+        return self._clipboardlist[len(self._clipboardlist)-1]
 
     def list(self):
         return self._clipboardlist

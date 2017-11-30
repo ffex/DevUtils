@@ -33,6 +33,7 @@ class LinuxNoteManager(MultiFile.MultiFile):
         print("-------------------->>>")
         print("a - add new " + self._type.lower())
         print("d - delete "+ self._type.lower())
+        #TODO da clipboard!
         print("q - quit to main menu")
         action = input("-> ")
         if action == "a":

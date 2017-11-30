@@ -10,20 +10,20 @@ import LinuxURLManager
 from Core import ClipboardWatcher
 from Core.ClipboardWatcher import ClipboardWatcher
 from Linux import LinuxClipboardManager
-
+import Global
 
 class main:
 
     def __init__(self):
 
         self.__mrgfolder = LinuxFolderManager.LinuxFolderManager()
-        self.__mrgclipboard= LinuxClipboardManager.LinuxClipboardManager()
+        Global.mrgclipboard = LinuxClipboardManager.LinuxClipboardManager()
         self.__mrgurl= LinuxURLManager.LinuxURLManager()
         self.__mrgcode= LinuxNoteManager.LinuxNoteManager('Code')
         self.__mrgnote= LinuxNoteManager.LinuxNoteManager('Note')
 
 
-        self._thread = ClipboardWatcher(self.__mrgclipboard)
+        self._thread = ClipboardWatcher(Global.mrgclipboard)
         self._thread.start()
 
 
@@ -57,7 +57,7 @@ class main:
                 self.__mrgcode.commandCode()
 				
             elif action == "5":
-                self.__mrgclipboard.command()
+                Global.mrgclipboard.command()
 	
             elif action == "d":
                 print(self.__mrgfolder.getdict())

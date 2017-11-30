@@ -1,6 +1,7 @@
 import os
-
+import Global
 from Core import SingleFile
+
 
 
 class LinuxFolderManager(SingleFile.SingleFile):
@@ -25,6 +26,10 @@ class LinuxFolderManager(SingleFile.SingleFile):
     def addfolder(self):
         title = input("title: ")
         content = input("pathname: ")
+        self._addElem(title, content)
+
+    def addfolderclip(self,content):
+        title = input("title: ")
         self._addElem(title, content)
 
     def printfolders(self):
@@ -82,6 +87,9 @@ class LinuxFolderManager(SingleFile.SingleFile):
             self.deletefolder(int(num1))
         elif action == "t":
             self.GUI= not self.GUI
+        elif action == "v":
+            self.addfolderclip(Global.mrgclipboard.lastItem())
+
         elif action == "q":
             pass
         else:
@@ -90,6 +98,6 @@ class LinuxFolderManager(SingleFile.SingleFile):
             if self.GUI:
                 pass #TODO
             else:
-                os.system("nautilus " + self._elem[num][1] + " 2>/dev/null &")
+                os.system("nautilus " + self._elem[num][1] + " 2>/dev/null &")#TODO fare dei comandi esterni che a seconda dell'os scelgono il da farsi! :D
             os.system("clear")
 

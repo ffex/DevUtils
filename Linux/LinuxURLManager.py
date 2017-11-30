@@ -1,4 +1,5 @@
 import os
+import Global
 
 from Core import SingleFile
 
@@ -14,6 +15,10 @@ class LinuxURLManager(SingleFile.SingleFile):
     def addURL(self):
         title = input("title: ")
         content = input("pathname: ")
+        self._addElem(title, content)
+
+    def addURLclip(self,content):
+        title = input("title: ")
         self._addElem(title, content)
 		
     def printURLS(self):
@@ -35,6 +40,9 @@ class LinuxURLManager(SingleFile.SingleFile):
         elif action == "d":
             num1 = input("Which one? > ")
             self.deleteURL(int(num1))
+        elif action == "v":
+            self.addURLclip(Global.mrgclipboard.lastItem())
+
         elif action == "q":
             pass
         else:
