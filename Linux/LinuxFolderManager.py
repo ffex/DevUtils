@@ -17,20 +17,30 @@ class LinuxFolderManager(SingleFile.SingleFile):
     # folders method
 
     def deletefolder(self,num):
+	    #retest
+        if num==None:
+            num=input("Which one? > ")
         self._deleteElem(num)
-        pass #TODO
+        
     
     def settingGUI(self):
         pass #TODO
-
-    def addfolder(self):
-        title = input("title: ")
-        content = input("pathname: ")
+	
+    def addfolder(self,title=None,content=None):
+        if title == None:
+            title = input("title: ")
+        if content == None:
+            content = input("pathname: ")
         self._addElem(title, content)
+		
+    #def addfolder(self):
+    #    title = input("title: ")
+    #    content = input("pathname: ")
+    #    self._addElem(title, content)
 
-    def addfolderclip(self,content):
-        title = input("title: ")
-        self._addElem(title, content)
+    #def addfolderclip(self,content):
+    #    title = input("title: ")
+    #    self._addElem(title, content)
 
     def printfolders(self):
         cnt = 0
@@ -51,18 +61,23 @@ class LinuxFolderManager(SingleFile.SingleFile):
     def __command(self,commands):
         commands=commands.split(",")
         com=commands[0]
+        comL=len(commands)
         if com=="a":
-            comL=len(commands)
+            title=None
+            tent=None
             if comL==2:
                 title=commands[1]
             elif comL==3:
                 title=commands[1]
                 folderdir=commands[2]
-
+            f.addfolder(title,content)
         elif com=="d":
-            pass
+            number=None;
+            if comL==2:
+                number=commands[1]
+            self.deletefolder(number)
         elif com=="v":
-            pass
+            self.addfolder(None,Global.mrgclipboard.lastItem())
         else:
             pass
 
@@ -98,6 +113,7 @@ class LinuxFolderManager(SingleFile.SingleFile):
             if self.GUI:
                 pass #TODO
             else:
+                #os.system("explorer /select,\"" + self._elem[num][1] + "\"")#TODO fare dei comandi esterni che a seconda dell'os scelgono il da farsi! :D
                 os.system("nautilus " + self._elem[num][1] + " 2>/dev/null &")#TODO fare dei comandi esterni che a seconda dell'os scelgono il da farsi! :D
             os.system("clear")
 
