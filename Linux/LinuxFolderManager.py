@@ -79,7 +79,11 @@ class LinuxFolderManager(SingleFile.SingleFile):
         elif com=="v":
             self.addfolder(None,Global.mrgclipboard.lastItem())
         else:
-            pass
+            try:
+                num = int(com)
+				os.system("explorer \"" + self._elem[num][1] + "\"")
+            except ValueError:
+                print('Not a valid command')
 
     def commandfolders(self):
         print("Open a dir by number")
@@ -95,25 +99,12 @@ class LinuxFolderManager(SingleFile.SingleFile):
         print("t - CLI or GUI")
         print("q - quit to main menu")
         action = input("-> ")
-        if action == "a":
-            self.addfolder()
-        elif action == "d":
-            num1=input("Which one? > ")
-            self.deletefolder(int(num1))
-        elif action == "t":
-            self.GUI= not self.GUI
-        elif action == "v":
-            self.addfolderclip(Global.mrgclipboard.lastItem())
-
-        elif action == "q":
-            pass
-        else:
-            num = int(action[0:2])
+        self.__command(action)
             # print(self._dictfolders[num][1])
-            if self.GUI:
-                pass #TODO
-            else:
-                #os.system("explorer /select,\"" + self._elem[num][1] + "\"")#TODO fare dei comandi esterni che a seconda dell'os scelgono il da farsi! :D
-                os.system("nautilus " + self._elem[num][1] + " 2>/dev/null &")#TODO fare dei comandi esterni che a seconda dell'os scelgono il da farsi! :D
-            os.system("clear")
+            #if self.GUI:
+            #    pass #TODO
+            #else:
+            #    os.system("explorer \"" + self._elem[num][1] + "\"")#TODO fare dei comandi esterni che a seconda dell'os scelgono il da farsi! :D
+                #os.system("nautilus " + self._elem[num][1] + " 2>/dev/null &")#TODO fare dei comandi esterni che a seconda dell'os scelgono il da farsi! :D
+            #os.system("clear")
 
