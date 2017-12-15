@@ -20,7 +20,7 @@ class LinuxFolderManager(SingleFile.SingleFile):
 	    #retest
         if num==None:
             num=input("Which one? > ")
-        self._deleteElem(num)
+        self._deleteElem(int(num))
         
     
     def settingGUI(self):
@@ -64,13 +64,13 @@ class LinuxFolderManager(SingleFile.SingleFile):
         comL=len(commands)
         if com=="a":
             title=None
-            tent=None
+            content=None
             if comL==2:
                 title=commands[1]
             elif comL==3:
                 title=commands[1]
-                folderdir=commands[2]
-            f.addfolder(title,content)
+                content=commands[2]
+            self.addfolder(title,content)
         elif com=="d":
             number=None;
             if comL==2:
@@ -78,10 +78,13 @@ class LinuxFolderManager(SingleFile.SingleFile):
             self.deletefolder(number)
         elif com=="v":
             self.addfolder(None,Global.mrgclipboard.lastItem())
+        elif com=="q":
+            pass
         else:
             try:
                 num = int(com)
-				os.system("explorer \"" + self._elem[num][1] + "\"")
+                os.system("nautilus " + self._elem[num][1] + " 2>/dev/null &")
+                #os.system("explorer \"" + self._elem[num][1] + "\"")
             except ValueError:
                 print('Not a valid command')
 
