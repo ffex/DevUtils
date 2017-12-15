@@ -47,17 +47,7 @@ class LinuxFolderManager(SingleFile.SingleFile):
         for elem in self._elem:
             print(str(cnt) + " - " + elem[0])
             cnt = cnt + 1
-#commands!
-        # a
-        # a,title
-        # a,title,path
-        # d
-        # dnum
-        # v
-        # v,title
-        # num -> se nel campo d'azione
-        #
-        #
+
     def __command(self,commands):
         commands=commands.split(",")
         com=commands[0]
@@ -77,7 +67,10 @@ class LinuxFolderManager(SingleFile.SingleFile):
                 number=commands[1]
             self.deletefolder(number)
         elif com=="v":
-            self.addfolder(None,Global.mrgclipboard.lastItem())
+            title=None
+            if comL==2:
+		title=commands[1]
+            self.addfolder(title,Global.mrgclipboard.lastItem())
         elif com=="q":
             pass
         else:
